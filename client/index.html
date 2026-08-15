@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLNC Tetris</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <button id="mute-btn" class="icon-btn" title="Sesi Aç/Kapat">
+        <i data-lucide="volume-2"></i>
+    </button>
+    <div id="lobby-overlay">
+        <div class="lobby-card">
+            <h2>KİMLİK <span class="accent">OLUŞTUR</span></h2>
+            <div class="input-group">
+                <label for="nickname">NICKNAME</label>
+                <input type="text" id="nickname" placeholder="Nickname giriniz..." maxlength="12">
+            </div>
+            <div class="color-picker-group">
+                <label>RENK SEÇİN</label>
+                <div id="color-options">
+                    <div class="color-opt active" data-color="#FF0D72" style="background-color: #FF0D72"></div>
+                    <div class="color-opt" data-color="#0DC2FF" style="background-color: #0DC2FF"></div>
+                    <div class="color-opt" data-color="#0DFF72" style="background-color: #0DFF72"></div>
+                    <div class="color-opt" data-color="#F538FF" style="background-color: #F538FF"></div>
+                    <div class="color-opt" data-color="#FF8E0D" style="background-color: #FF8E0D"></div>
+                    <div class="color-opt" data-color="#FFE138" style="background-color: #FFE138"></div>
+                    <div class="color-opt" data-color="#3877FF" style="background-color: #3877FF"></div>
+                </div>
+            </div>
+            <div id="lobby-host-options" class="hidden">
+                <label>OYUN ALANI BOYUTU</label>
+                <div class="size-picker">
+                    <label><input type="radio" name="size" value="10x20" checked> 10x20 (Standart)</label>
+                    <label><input type="radio" name="size" value="20x20"> 20x20 (Geniş)</label>
+                </div>
+            </div>
+            <button id="join-btn">OYUNA KATIL</button>
+            <div class="lobby-footer">
+                <a href="rules.html" target="_blank">Puanlama ve Oyun Kuralları</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden">
+        <header>
+            <h1>KLNC <span class="accent">TETRIS</span></h1>
+        </header>
+
+        <div class="main-layout">
+            <div class="canvas-wrapper">
+                <canvas id="tetris" width="300" height="600"></canvas>
+            </div>
+
+            <aside id="ui-panel">
+                <div class="stat-card">
+                    <h3>SKOR</h3>
+                    <div id="score-display">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>OYUNCULAR</h3>
+                    <ul id="player-list"></ul>
+                </div>
+
+                <div id="game-host-options" style="display: none;">
+                    <h3>HOST AYARLARI</h3>
+                    <button id="stop-game-btn" class="secondary-btn"
+                        style="width: 100%; margin-top: 5px; background: #ff8e0d; color: white;">OYUNU DURDUR</button>
+                    <button id="back-to-lobby-btn" class="secondary-btn"
+                        style="width: 100%; margin-top: 10px; background: #ff4d4d; color: white;">OYUNU BİTİR
+                        (LOBİ)</button>
+                </div>
+
+                <div class="controls-guide">
+                    <h3>KONTROLLER</h3>
+                    <ul>
+                        <li><span class="key">←</span> <span class="key">→</span> : Hareket</li>
+                        <li><span class="key">↑</span> : Döndür</li>
+                        <li><span class="key">↓</span> : Hızlı Düşüş</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <div id="game-over-overlay" class="hidden">
+            <div class="game-over-card">
+                <h2>OYUN <span class="accent">BİTTİ</span></h2>
+                <div class="final-score">Puan: <span id="final-score-val">0</span></div>
+                <div id="restart-container">
+                    <p id="wait-msg">Hostun oyunu yeniden başlatması bekleniyor...</p>
+                    <button id="restart-btn" class="hidden">YENİDEN BAŞLAT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

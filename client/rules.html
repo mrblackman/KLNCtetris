@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puanlama Kuralları - KLNC Tetris</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .rules-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
+        }
+
+        .rules-container h2 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .rule-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rule-item:last-child {
+            border: none;
+        }
+
+        .rule-item h3 {
+            border: none;
+            padding: 0;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .rule-item p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rules-container">
+        <h2>PUANLAMA <span class="accent">SİSTEMİ</span></h2>
+
+        <div class="rule-item">
+            <h3>Blok Yerleştirme</h3>
+            <p>Her blok sabitlendiğinde temel <strong>10 Puan</strong> kazanırsınız.</p>
+        </div>
+
+        <div class="rule-item">
+            <h3>Yükseklik Bonusu</h3>
+            <p>Bloğu ne kadar aşağıya yerleştirirseniz o kadar yüksek bonus puan alırsınız. Alt sıralar daha değerlidir!
+            </p>
+        </div>
+
+        <div class="rule-item">
+            <h3>Satır Temizleme</h3>
+            <p>Aynı anda silinen satır sayısına göre katlamalı puan:</p>
+            <ul>
+                <li>1 Satır: <strong>100 Puan</strong></li>
+                <li>2 Satır: <strong>300 Puan</strong></li>
+                <li>3 Satır: <strong>500 Puan</strong></li>
+                <li>4 Satır (Tetris!): <strong>800 Puan</strong></li>
+            </ul>
+        </div>
+
+        <div class="rule-item">
+            <h3>Co-op Hedef</h3>
+            <p>Tüm oyuncuların topladığı puanlar ortak bir havuzda birikir. Ekibinle en yüksek skoru hedefle!</p>
+        </div>
+
+        <a href="/" class="back-link">&lt; LOBİYE DÖN</a>
+    </div>
+</body>
+
+</html>

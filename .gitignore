@@ -1,0 +1,21 @@
+# Bağımlılıklar (Dependencies)
+node_modules/
+
+# Ortam ve Hassas Bilgiler (Şifreler, SSH ve Sunucu Erişim Bilgileri)
+.env
+.env.local
+.env.*.local
+rules.md
+deploy.py
+
+# Sistem ve IDE Dosyaları
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Log Dosyaları
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

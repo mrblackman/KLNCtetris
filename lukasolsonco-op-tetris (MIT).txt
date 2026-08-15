@@ -1,0 +1,27 @@
+1) En uygun başlangıç lukasolsonco-op-tetris (MIT)
+
+Bu proje tam “tek playfield + birden fazla oyuncu” mantığında çalışıyor.
+
+Node + Socket.IO ile gerçek zamanlı server socket.io kullanıyor.
+
+Her bağlanan oyuncu için server yeni bir tetromino ekliyor addTetromino(socket.id)
+
+Oyun state’i server’dan herkese yayınlanıyor (changedata, changetetromino).
+
+Ekran görüntüsünde “PLAYERS 3” görünüyor; yani 3 kişi aynı board’da oynuyor.
+
+README’de de “friends remotely” için port yönlendirme öneriyor.
+
+Lokalde çalıştırma (hızlı deneme)
+
+git clone httpsgithub.comlukasolsonco-op-tetris.git
+cd co-op-tetrisserver
+npm install
+npm start
+# sonra tarayıcıdan
+# httplocalhost1111
+# 2-3-4 kişi simüle etmek için aynı adresi farklı sekmelerde açabilirsin
+
+(Port 1111 ve adımlar README’de de var.)
+
+Bu repo “çok temiz bir çekirdek” veriyor tek board, çok tetromino, server otoriter.

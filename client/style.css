@@ -1,0 +1,347 @@
+:root {
+    --bg-color: #0b0e14;
+    --card-bg: #1a1f2c;
+    --accent-color: #00d2ff;
+    --text-primary: #e0e6ed;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+    --grid-color: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overscroll-behavior: none;
+    /* Pull-to-refresh engellemek için */
+}
+
+#mute-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.icon-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+}
+
+.icon-btn:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.icon-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+#game-container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
+
+.accent {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.main-layout {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.canvas-wrapper {
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--border-color);
+    position: relative;
+}
+
+#tetris {
+    display: block;
+    background: #000;
+    border-radius: 4px;
+}
+
+#ui-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 250px;
+}
+
+.stat-card,
+.controls-guide {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+#player-list {
+    list-style: none;
+}
+
+.player-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.controls-guide ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.key {
+    background: #1e293b;
+    border: 1px solid #475569;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Lobi Overlay */
+#lobby-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 14, 20, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lobby-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lobby-card h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-group label,
+.color-picker-group label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+#nickname {
+    background: #0b0e14;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#nickname:focus {
+    border-color: var(--accent-color);
+}
+
+#color-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-opt {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+}
+
+.color-opt:hover {
+    transform: scale(1.1);
+}
+
+.color-opt.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.host-tag {
+    color: #ffd700;
+    font-weight: bold;
+    margin-left: 5px;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.color-opt.active {
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+#host-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+}
+
+.size-picker {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.size-picker label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#join-btn {
+    background: linear-gradient(135deg, var(--accent-color), #0080ff);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#join-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.3);
+}
+
+.lobby-footer {
+    text-align: center;
+    margin-top: -10px;
+}
+
+.lobby-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s;
+}
+
+.lobby-footer a:hover {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+}
