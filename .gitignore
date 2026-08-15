@@ -1,12 +1,11 @@
 # Bağımlılıklar (Dependencies)
 node_modules/
 
-# Ortam ve Hassas Bilgiler (Şifreler, SSH ve Sunucu Erişim Bilgileri)
+# Hassas Bilgiler, Şifreler ve Ortam Değişkenleri
+credentials.md
 .env
 .env.local
 .env.*.local
-rules.md
-deploy.py
 
 # Sistem ve IDE Dosyaları
 .DS_Store
